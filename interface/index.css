@@ -1,0 +1,125 @@
+html {
+    background: #dfdfdf;
+    color: #322f32;
+    font: 14px Helvetica, sans-serif;
+}
+
+body {
+    margin: 10% 25% 0 25%;
+}
+
+h1 {
+    margin: 5px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+a {
+    color: inherit;
+}
+
+form {
+    padding: 20px;
+    border-radius: 5px;
+    background: white;
+}
+
+.text {
+    margin: 0 0 20px 0;
+}
+
+.text.done {
+    margin: 0;
+}
+
+span {
+    font-size: 11px;
+}
+
+.domain {
+    margin-left: 4px;
+    color: #747474;
+}
+
+input {
+    font: inherit;
+}
+
+input[type=text] {
+    width: calc(100% - 10px);
+    margin: 0;
+    border: 1px solid #cecece;
+    border-radius: 3px;
+    padding: 2px 4px;
+}
+
+input[type=text]:focus {
+    border: 1px solid #322f32;
+}
+
+input[type=text]:focus {
+    outline: 0;
+}
+
+input[type=file] {
+    display: none;
+}
+
+input[type=button] {
+    padding: 5px 10px;
+    background: #878787;
+    margin: 0;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+}
+
+input[type=button]:active {
+    background: #040404;
+}
+
+.filetarget {
+    display: table;
+    width: calc(100% - 156px);
+    margin: 20px 0 0 0;
+    border: 3px dashed #cecece;
+    border-radius: 3px;
+    padding: 75px;
+    text-align: center;
+}
+
+.filetarget.active {
+    border: 3px dashed #322f32;
+}
+
+.filetarget p {
+    margin: 0;
+}
+
+.filetarget p.named {
+    font-size: 23px;
+}
+
+.filetarget.active p {
+    pointer-events: none;
+}
+
+.info {
+    float: right;
+    margin: 25px 0 0 0;
+}
+
+input[type=button].upload {
+    margin: 20px 0 0 0;
+    padding: 5px 50px;
+    background: #a73546;
+}
+
+input[type=button].upload:active {
+    background: #621f29;
+}
+
+progress {
+    width: 100%;
+}
