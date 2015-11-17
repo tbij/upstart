@@ -22,7 +22,7 @@ function Upstart() {
         var fileTargetText = document.querySelector('.filetarget p')
         var fileInput = document.querySelector('input[type=file]')
         fileInput.addEventListener('change', function () {
-            if (e.dataTransfer.files[0].type === 'application/zip') {
+            if (fileInput.files[0].type === 'application/zip') {
                 file = fileInput.files[0]
                 fileTargetText.innerHTML = fileInput.files[0].name
                 fileTargetText.classList.add('named')
@@ -35,10 +35,10 @@ function Upstart() {
             fileInput.click()
         })
         var fileTarget = document.querySelector('.filetarget')
-        fileTarget.addEventListener('dragenter', function (e) {
+        fileTarget.addEventListener('dragenter', function () {
             fileTarget.classList.add('active')
         })
-        fileTarget.addEventListener('dragleave', function (e) {
+        fileTarget.addEventListener('dragleave', function () {
             fileTarget.classList.remove('active')
         })
         fileTarget.addEventListener('dragover', function (e) {
@@ -100,12 +100,12 @@ function Upstart() {
         document.querySelector('form').appendChild(progress)
         var http = new XMLHttpRequest()
         http.open('POST', '/new', true)
+	http.setRequestHeader('Authorization', 'Bearer ' + document.cookie.match(/token=(.*?)(;|$)/)[1])
         var data = new FormData()
         data.append('name', document.querySelector('input[type=text]').value)
         data.append('file', file)
         http.addEventListener('progress', function (e) {
             document.querySelector('progress')
-            console.log('-> ',e.loaded,'::',e.total)
             if (e.lengthComputable) progress.value = e.loaded / e.total
         })
         http.addEventListener('load', function () {
