@@ -1,0 +1,14 @@
+{
+    "port": 80,
+    "auth": {
+        "key": "",
+        "domain": "",
+        "clientId": "",
+        "clientSecret": ""
+    },
+    "git": {
+        "organisation": "",
+        "username": "",
+        "password": ""
+    }
+}
