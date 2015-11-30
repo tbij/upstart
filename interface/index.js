@@ -100,7 +100,7 @@ function Upstart() {
         document.querySelector('form').appendChild(progress)
         var http = new XMLHttpRequest()
         http.open('POST', '/new', true)
-	http.setRequestHeader('Authorization', 'Bearer ' + document.cookie.match(/token=(.*?)(;|$)/)[1])
+        http.setRequestHeader('Authorization', 'Bearer ' + document.cookie.match(/token=(.*?)(;|$)/)[1])
         var data = new FormData()
         data.append('name', document.querySelector('input[type=text]').value)
         data.append('file', file)
@@ -110,14 +110,21 @@ function Upstart() {
         })
         http.addEventListener('load', function () {
             document.querySelector('progress').remove()
-            var location = document.querySelector('.domain').innerHTML + document.querySelector('.fragment').innerHTML
-            var locationLink = document.createElement('a')
-            locationLink.href = location
-            locationLink.innerHTML = location
-            var text = document.querySelector('.text')
-            text.innerHTML = 'Done! The interactive should now be available at: '
-            text.appendChild(locationLink)
-            text.classList.add('done')
+            if (http.status >= 400) {
+                var text = document.querySelector('.text')
+                text.innerHTML = 'An error occurred: ' + http.responseText
+                text.classList.add('done')
+            }
+            else {
+                var location = document.querySelector('.domain').innerHTML + document.querySelector('.fragment').innerHTML
+                var locationLink = document.createElement('a')
+                locationLink.href = location
+                locationLink.innerHTML = location
+                var text = document.querySelector('.text')
+                text.innerHTML = 'Done! The interactive should now be available at: '
+                text.appendChild(locationLink)
+                text.classList.add('done')
+            }
         })
         http.send(data)
     }

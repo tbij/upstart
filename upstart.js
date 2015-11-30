@@ -42,13 +42,13 @@ app.use((request, response, next) => {
         if (authorisation === undefined) response.sendStatus(400)
         else if (authorisation.replace('Bearer ', '') !== userToken) response.sendStatus(400)
         else {
-	    request.user = user
-	    next()
-	}
+            request.user = user
+            next()
+        }
     }
     else if (user !== null) { // signed in, so just refresh the token
         response.cookie('token', JWTSimple.encode(user, Config.auth.key), cookieOptions)
-	request.user = user
+        request.user = user
         next()
     }
     else if (user === null && isProtected) response.redirect('/sign-in') // not signed in, but need to be
