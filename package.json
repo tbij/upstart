@@ -12,7 +12,7 @@
         "adm-zip": "0.4.x",
         "github": "0.2.x",
         "nodegit": "0.5.x",
-        "ursa": "0.6.x"
+        "ursa": "0.9.x"
     },
     "scripts": {
         "start": "node upstart"
