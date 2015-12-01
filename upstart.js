@@ -226,7 +226,7 @@ function gitRemote(repository, remote) {
 function gitPush(repository, key) {
     const config = {
         callbacks: {
-           credentials: (_, user) => NodeGit.Cred.sshKeyMemoryNew(Config.git.username, key.public, key.private, '')
+           credentials: () => NodeGit.Cred.sshKeyMemoryNew(Config.git.username, key.public, key.private, '')
         }
     }
     return new Promise((resolve, reject) => {
