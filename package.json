@@ -1,19 +1,20 @@
 {
     "name": "upstart",
     "dependencies": {
-	"express": "4.13.x",
-	"body-parser": "1.14.x",
-	"cookie-parser": "1.4.x",
-	"multer": "1.1.x",
-	"passport": "0.3.x",
-	"passport-google-oauth": "0.2.x",
-	"jwt-simple": "0.3.x",
-	"fs-extra": "0.26.x",
-	"adm-zip": "0.4.x",
-	"github": "0.2.x",
-	"nodegit": "0.5.x"
+        "express": "4.13.x",
+        "body-parser": "1.14.x",
+        "cookie-parser": "1.4.x",
+        "multer": "1.1.x",
+        "passport": "0.3.x",
+        "passport-google-oauth": "0.2.x",
+        "jwt-simple": "0.3.x",
+        "fs-extra": "0.26.x",
+        "adm-zip": "0.4.x",
+        "github": "0.2.x",
+        "nodegit": "0.5.x",
+        "ursa": "0.6.x"
     },
     "scripts": {
-	"start": "node upstart"
+        "start": "node upstart"
     }
 }
