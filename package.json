@@ -1,5 +1,6 @@
 {
     "name": "upstart",
+    "private": true,
     "dependencies": {
         "express": "4.13.x",
         "body-parser": "1.14.x",
