@@ -180,7 +180,9 @@ function gitAddAll(repository) {
     return new Promise((resolve, reject) => {
         repository.openIndex()
             .then(index => {
-                index.addAll().then(() => resolve(repository))
+                index.addAll()
+		    .then(() => resolve(repository))
+		    .catch(reject)
             })
             .catch(reject)
     })
@@ -193,7 +195,9 @@ function gitCommit(repository, user) {
             .then(index => {
                 index.write()
                 index.writeTree().then(oid => {
-                    repository.createCommit('HEAD', author, author, 'Published', oid, []).then(() => resolve(repository))
+                    repository.createCommit('HEAD', author, author, 'Published', oid, [])
+			.then(() => resolve(repository))
+			.catch(reject)
                 })
             })
             .catch(reject)
@@ -204,7 +208,9 @@ function gitBranch(repository) {
     return new Promise((resolve, reject) => {
         repository.getCurrentBranch()
             .then(master => {
-                NodeGit.Branch.move(master, 'gh-pages', 0).then(() => resolve(repository))
+                NodeGit.Branch.move(master, 'gh-pages', 0)
+		    .then(() => resolve(repository))
+		    .catch(reject)
             })
             .catch(reject)
     })
@@ -226,7 +232,9 @@ function gitPush(repository, key) {
     return new Promise((resolve, reject) => {
         repository.getRemote('origin')
             .then(remote => {
-                remote.push(['refs/heads/gh-pages:refs/heads/gh-pages'], config).then(() => resolve(repository))
+                remote.push(['refs/heads/gh-pages:refs/heads/gh-pages'], config)
+		    .then(() => resolve(repository))
+		    .catch(reject)
             })
             .catch(reject)
     })
