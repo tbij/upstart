@@ -35,7 +35,7 @@ const signinAuth = Passport.authenticate('google', { failureRedirect: '/sign-in'
 const upload = Multer({ dest: 'temp' }).single('file')
 
 app.use((request, response, next) => {
-    const isProtected = request.path !== '/sign-in' && request.path !== '/sign-in/authenticate'
+    const isProtected = request.path !== '/sign-in' && request.path !== '/sign-in/authenticate' && request.path !== '/domain'
     const userToken = request.cookies['token']
     const user = userToken ? JWTSimple.decode(userToken, Config.auth.key) : null
     if (user !== null && request.method !== 'GET') { // signed in and non-GET, so require header (because of CSRF)
@@ -65,6 +65,10 @@ app.get('/sign-in/authenticate', signinAuth, (request, response) => {
 })
 
 app.use('/', Express.static('interface'))
+
+app.get('/domain', (request, response) => {
+    response.send(Config.domain)
+})
 
 app.post('/new', upload, (request, response) => {
     const name = request.body.name.replace(/[^A-Za-z0-9-]/g, '-').replace(/-+/g, '-').toLowerCase().substring(0, 100)

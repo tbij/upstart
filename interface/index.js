@@ -3,9 +3,20 @@ function Upstart() {
     var file
 
     function init() {
+        setupDomain()
         setupName()
         setupFile()
         setupUpload()
+    }
+
+    function setupDomain() {
+        var http = new XMLHttpRequest()
+        http.open('GET', '/domain', true)
+        http.addEventListener('load', function () {
+            var domain = document.querySelector('.domain')
+            domain.innerHTML = http.responseText
+        })
+        http.send()
     }
 
     function setupName() {
