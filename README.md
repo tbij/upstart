@@ -3,6 +3,8 @@ Upstart
 
 A friendly tool which takes a Zip file and creates a website using Github Pages.
 
+To use, it only requires a name, which is used in the URL, and a Zip file containing an `index.html` file.
+
 
 Running
 -------
